@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+_CYCLE_H	cycle.h	9;"	d
+_OVAL_H	oval.h	9;"	d
+_SHAPE_H	shape.h	9;"	d
+area	cycle.c	/^static int area(const struct shape* pthis)$/;"	f	file:
+area	oval.c	/^static int area(const struct shape* pthis)$/;"	f	file:
+area	shape.c	/^static int area(const struct shape* pthis)$/;"	f	file:
+base	cycle.h	/^	struct shape base;$/;"	m	struct:cycle	typeref:struct:cycle::shape
+base	oval.h	/^	struct shape base;$/;"	m	struct:oval	typeref:struct:oval::shape
+construct_cycle	cycle.c	/^struct cycle* construct_cycle(int radius)$/;"	f
+construct_oval	oval.c	/^struct oval* construct_oval(int a, int b)$/;"	f
+cycle	cycle.h	/^struct cycle {$/;"	s
+cycle_attributes	cycle.h	15;"	d
+cycle_init	cycle.c	/^static void cycle_init(struct cycle* pthis, int radius, void* vptr)$/;"	f	file:
+cycle_operations	cycle.h	18;"	d
+destruct_cycle	cycle.c	/^void destruct_cycle(struct shape** pthis)$/;"	f
+destruct_oval	oval.c	/^void destruct_oval(struct shape** pthis)$/;"	f
+largest_shape	main.c	/^struct shape* largest_shape(struct shape *shapes[], uint32_t nshapes)$/;"	f
+main	main.c	/^int main()$/;"	f
+oval	oval.h	/^struct oval {$/;"	s
+oval_attributes	oval.h	15;"	d
+oval_init	oval.c	/^static void oval_init(struct oval* pthis, int a, int b, void* vptr)$/;"	f	file:
+oval_operations	oval.h	19;"	d
+shape	shape.h	/^struct shape {$/;"	s
+shape_attributes	shape.h	13;"	d
+shape_init	shape.c	/^void shape_init(struct shape* pthis, void* vptr)$/;"	f
+shape_operations	shape.h	15;"	d
+shape_vtbl	shape.h	/^struct shape_vtbl {$/;"	s
+vptr	shape.h	/^	const struct shape_vtbl *vptr;$/;"	m	struct:shape	typeref:struct:shape::shape_vtbl
+vtbl	cycle.c	/^static struct shape_vtbl vtbl = {$/;"	v	typeref:struct:shape_vtbl	file:
+vtbl	oval.c	/^static struct shape_vtbl vtbl = {$/;"	v	typeref:struct:shape_vtbl	file:
