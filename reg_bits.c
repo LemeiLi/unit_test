@@ -8,6 +8,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdint.h>
+#include<unistd.h>
 
 
 static inline uint32_t __rbit(uint32_t value)
@@ -43,6 +44,24 @@ static inline uint8_t __clz(uint32_t data)
 	return count;
 }
 
+void printf_bin(uint32_t num)
+{
+	uint8_t *p = (uint8_t *)&num + 3;
+	uint8_t j;
+
+	for (uint8_t i = 0; i < 4; i++) {
+		j = *(p - i); 
+		for (int8_t k = 7; k >= 0; k--) {
+			if (j & (1 << k))
+				printf("1");
+			else
+				printf("0");
+		}
+		printf(" ");
+	}
+	printf("\r\n");
+}
+
 #define qspi_set_bit(reg, bit)     ((reg) |= (bit))
 #define qspi_clear_bit(reg, bit)   ((reg) &= ~(bit))
 #define __qspi_read_bit(reg, bit)  ((reg) & (bit))
@@ -62,6 +81,10 @@ static inline uint8_t __clz(uint32_t data)
 #define qspi_modify_reg_multi(reg, clearmask, setmask) \
 		qspi_write_reg((reg), (((qspi_read_reg(reg)) & (~(clearmask))) | (setmask)))
 
+#define qspi_dump_reg(reg)              printf("qspi_dump_reg(%s) = %#x\n", #reg, qspi_read_reg(reg))
+#define qspi_dump_reg_bin(reg)			printf("qspi_dump_reg_bin(%s) = ", #reg); \
+	                                    printf_bin((reg))
+ 
 struct qspi {
 	int CR0;
 	int CR1;
@@ -107,6 +130,9 @@ int main()
 	printf("qspi_set_bit([7:4]) = %#x\n", qspi_set_bit(qspi_obj->CR0,  CR0_FRAME_SIZE));
 	printf("qspi_read_bit([7:4]) = %#x\n", qspi_read_bit(qspi_obj->CR0,  CR0_FRAME_SIZE));
 	printf("qspi_read_reg(CR0) = %#x\n", qspi_read_reg(qspi_obj->CR0));
+	
+	qspi_dump_reg(qspi_obj->CR0);
+	qspi_dump_reg_bin(qspi_obj->CR0);
 	
 
 	return 0;
