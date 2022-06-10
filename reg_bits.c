@@ -47,10 +47,9 @@ static inline uint8_t __clz(uint32_t data)
 void printf_bin(uint32_t num)
 {
 	uint8_t *p = (uint8_t *)&num + 3;
-	uint8_t j;
 
 	for (uint8_t i = 0; i < 4; i++) {
-		j = *(p - i); 
+		uint8_t j = *(p - i); 
 		for (int8_t k = 7; k >= 0; k--) {
 			if (j & (1 << k))
 				printf("1");
