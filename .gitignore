@@ -10,8 +10,9 @@
 # Normal rules (sorted alphabetically)
 #
 .gitignore 
-.*
+#.*
 *.a
+*.out
 *.asn1.[ch]
 *.bin
 *.bz2
@@ -50,6 +51,8 @@ modules.builtin
 modules.order
 
 vmlinux_objdump-SDl.S
+vmlinux_objdump-SDl.S.c
+vmlinux_objdump-SDl.S.sh
 
 #
 # Top-level generic files
